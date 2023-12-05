@@ -45,10 +45,25 @@ document.addEventListener("click", function (e) {
 
 // Modal Box
 const itemDetailModal = document.querySelector("#item-datail-modal");
-const itemDetailButton = document.querySelector(".item-detail-button");
+const itemDetailButtons = document.querySelectorAll(".item-detail-button");
 
-itemDetailButton.onclick = (e) => {
-  itemDetailModal.style.display = "flex";
-  // console.log(itemDetailModal);
+itemDetailButtons.forEach((btn) => {
+  btn.onclick = (e) => {
+    itemDetailModal.style.display = "flex";
+    // console.log(itemDetailModal);
+    e.preventDefault();
+  };
+});
+
+// klik tombol close modal
+document.querySelector(".modal .close-icon").onclick = (e) => {
+  itemDetailModal.style.display = "none";
   e.preventDefault();
+};
+
+// klik di luar modal
+window.onclick = (e) => {
+  if (e.target === itemDetailModal) {
+    itemDetailModal.style.display = "none";
+  }
 };
